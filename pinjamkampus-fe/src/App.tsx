@@ -7,6 +7,10 @@ import BorrowingList from './components/BorrowingList';
 export default function App() {
   const [refreshResources, setRefreshResources] = useState(0);
   const [refreshBorrowings, setRefreshBorrowings] = useState(0);
+  
+  // State untuk menyimpan data yang sedang di-edit (F6)
+  const [editItem, setEditItem] = useState<any>(null);
+
   const triggerResourceRefresh = () => setRefreshResources(prev => prev + 1);
   const triggerBorrowingRefresh = () => setRefreshBorrowings(prev => prev + 1);
 
@@ -20,10 +24,23 @@ export default function App() {
       </section>
 
       <section>
-        <h2>Buat Peminjaman</h2>
-        {/* Render Form F2 di sini */}
-        <BorrowingForm onBorrowingAdded={triggerBorrowingRefresh} />
-        <BorrowingList refreshTrigger={refreshBorrowings} />
+        <h2>{editItem ? 'Edit Peminjaman' : 'Buat Peminjaman'}</h2>
+        {/* Kirim editItem dan fungsi untuk membatalkan edit */}
+        <BorrowingForm 
+          onBorrowingAdded={triggerBorrowingRefresh} 
+          editItem={editItem} 
+          setEditItem={setEditItem} 
+        />
+      </section>
+
+      <section>
+        <h2>Daftar Peminjaman</h2>
+        {/* Kirim fungsi onEdit untuk dipicu dari tombol Edit di daftar */}
+        <BorrowingList 
+          refreshTrigger={refreshBorrowings} 
+          onEdit={(item) => setEditItem(item)}
+          onRefresh={triggerBorrowingRefresh}
+        />
       </section>
     </div>
   );
