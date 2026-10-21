@@ -11,9 +11,9 @@
 
 ## 4. Bug atau kendala (minimal dua)
 ### Bug 1
-- Gejala:
-- Cara menemukan:
-- Penyebab dan solusi:
+- Gejala: Halaman web blank, form sumber daya tidak muncul, dan tidak ada aktivitas  API di tab Network.
+- Cara menemukan: : Setelah menjalankan npm run dev dan membuka http://localhost:5173, halaman tidak menampilkan UI apapun dan log tab Network Fetch/XHR tetap kosong meski sudah di-refresh.
+- Penyebab dan solusi: Penyebabnya adalah fungsi komponen utama di App.tsx tidak diekspor, sehingga file main.tsx gagal membaca dan merender komponen tersebut. Solusinya adalah menambahkan sintaks export default di depan function App().
 
 ### Bug 2
 - Gejala:
