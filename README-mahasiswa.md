@@ -9,8 +9,8 @@
 ## Fitur
 - [v] F1 Kelola sumber daya
 - [v] F2 Buat peminjaman
-- [ ] F3 Daftar peminjaman (filter, detail)
-- [ ] F4 Validasi dan penanganan error
+- [v] F3 Daftar peminjaman (filter, detail)
+- [v] F4 Validasi dan penanganan error
 - [ ] F5 Tampilan bentrok (409)
 - [ ] F6 Ubah dan hapus
 - [ ] F7 Aman klik ganda dan data konsisten

@@ -1,16 +1,27 @@
-// src/api/peminjaman.ts
 const BASE_URL = 'http://localhost:8080';
 
 export async function getBorrowings(query = '') {
   const res = await fetch(`${BASE_URL}/peminjaman${query}`);
+  if (!res.ok) throw res; 
   return res.json();
 }
 
 export async function createBorrowing(data: any) {
-  const res = await fetch(`${BASE_URL}/peminjaman`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  return res.status === 201 ? res.json() : Promise.reject(res);
+  try {
+    const res = await fetch(`${BASE_URL}/peminjaman`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    
+    // Jika ada error dari server (400, 404, 409)
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.error); 
+    }
+    
+    return await res.json();
+  } catch (error: any) {
+    throw new Error(error.message === 'Failed to fetch' ? 'Gagal menghubungi server' : error.message);
+  }
 }

@@ -23,3 +23,13 @@ Log yang jujur tidak mengurangi nilai, sebanyak apa pun AI dipakai. Yang mengura
 - Prompt: "apakah ada yang salah? kok keluarnya -- saja" beserta lampiran kode `BorrowingList`.
 - Dipakai: Bagian rendering JSX (`return`) di dalam komponen `BorrowingList.tsx`.
 - Diubah: Saya mengganti properti yang dipanggil di dalam elemen `<li>` sesuai perbaikan AI. Sebelumnya memanggil field masih milik resources (`res.peminjam`, dll) dan menyesuaikan format teks statisnya menjadi seperti `Slot 3-4` dan `Jumlah 1` agar persis sesuai dengan aturan pengujian di Requirement.
+
+## Fitur F4 Validasi Input dan Penanganan Error
+- Prompt: "oke sekarang buatkan untuk F4"
+- Dipakai: Penyesuaian `try-catch` pada `src/api/peminjaman.ts` dan logika validasi sebelum `fetch` di `BorrowingForm.tsx`.
+- Diubah: Saya menambahkan elemen pengecekan `if` di dalam fungsi submit untuk menampilkan error di `<div role="alert">` dan mencegah data terkirim jika tidak valid. Saya menangkap struktur pesan error bawaan `Failed to fetch` dari JS lalu diubah secara eksplisit menampilkan teks "gagal" untuk mengakomodasi aturan wajib di dokumen Requirement ketika server mati.
+
+## Penyesuaian Validasi Form Peminjaman (F4)
+- Prompt: Memberikan gambar screenshot popup error bawaan browser, "apakah keluarnya seperti itu sudah benar"
+- Dipakai: Tag form dan input di komponen `BorrowingForm.tsx`.
+- Diubah: Atas saran AI, saya menghapus seluruh atribut `required` dari elemen `<input>` dan `<select>`. Perubahan ini dilakukan agar validasi bawaan browser tidak menimpa validasi manual React saya, sehingga syarat wajib menampilkan pesan peringatan di dalam elemen `role="alert"` dapat terpenuhi dengan baik.
