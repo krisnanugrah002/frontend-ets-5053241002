@@ -7,8 +7,8 @@
   2. Terminal 2: `npm install` lalu `npm run dev`, kemudian buka alamat yang ditampilkan Vite
 
 ## Fitur
-- [ ] F1 Kelola sumber daya
-- [ ] F2 Buat peminjaman
+- [v] F1 Kelola sumber daya
+- [v] F2 Buat peminjaman
 - [ ] F3 Daftar peminjaman (filter, detail)
 - [ ] F4 Validasi dan penanganan error
 - [ ] F5 Tampilan bentrok (409)

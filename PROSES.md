@@ -16,9 +16,9 @@
 - Penyebab dan solusi: Penyebabnya adalah fungsi komponen utama di App.tsx tidak diekspor, sehingga file main.tsx gagal membaca dan merender komponen tersebut. Solusinya adalah menambahkan sintaks export default di depan function App().
 
 ### Bug 2
-- Gejala:
-- Cara menemukan:
-- Penyebab dan solusi:
+- Gejala: Daftar peminjaman di layar hanya menampilkan tanda hubung/strip ("--")
+- Cara menemukan: Setelah komponen BorrowingList (F3) berhasil melakukan fetch dan merender elemen <li>, teks di dalamnya kosong saat dilihat di browser.
+- Penyebab dan solusi: Penyebabnya ada salah penulisan properti pada map. Properti masih milik resource sehingga diubah menjadi res.peminjam, res.tanggal, res.slot_mulai, res.slot_selesai, res.jumlah, dan res.status.
 
 ## 5. Change request
 (Apa yang diminta, bagian kode mana yang kamu ubah, dan satu keputusan desain yang kamu ambil.)
